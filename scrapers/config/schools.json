@@ -1,0 +1,82 @@
+[
+  {
+    "name": "DPS Gurgaon",
+    "career_url": "https://dpsgurgaon.org/careers",
+    "selectors": {
+      "job_list": ".career-listing, .job-listing, .vacancy-item",
+      "title": "h3, h4, .job-title",
+      "description": ".job-description, .vacancy-details, p"
+    },
+    "location": "Sector 45, Gurgaon"
+  },
+  {
+    "name": "The Shri Ram School",
+    "career_url": "https://www.tsrs.org/careers",
+    "selectors": {
+      "job_list": ".career-item, .vacancy, .job-post",
+      "title": "h3, h4, .title",
+      "description": ".description, .details, p"
+    },
+    "location": "Aravali, Gurgaon"
+  },
+  {
+    "name": "Pathways School Gurgaon",
+    "career_url": "https://www.pathways.in/gurgaon/careers",
+    "selectors": {
+      "job_list": ".career-listing, .job-item, .opening",
+      "title": "h3, h4, .job-title",
+      "description": ".job-desc, .details, p"
+    },
+    "location": "Sector 100, Gurgaon"
+  },
+  {
+    "name": "Scottish High International School",
+    "career_url": "https://www.scottishigh.com/careers",
+    "selectors": {
+      "job_list": ".vacancy, .career-post, .job-listing",
+      "title": "h3, h4, .title",
+      "description": ".description, p"
+    },
+    "location": "Sector 57, Gurgaon"
+  },
+  {
+    "name": "Heritage Xperiential Learning School",
+    "career_url": "https://www.heritageschool.in/work-with-us",
+    "selectors": {
+      "job_list": ".career-item, .job-post, .vacancy",
+      "title": "h3, h4, .job-title",
+      "description": ".description, .content, p"
+    },
+    "location": "Sector 62, Gurgaon"
+  },
+  {
+    "name": "Suncity School",
+    "career_url": "https://www.suncityschool.in/careers",
+    "selectors": {
+      "job_list": ".job-listing, .vacancy, .career-item",
+      "title": "h3, h4, .title",
+      "description": ".description, p"
+    },
+    "location": "Sector 54, Gurgaon"
+  },
+  {
+    "name": "GD Goenka Public School",
+    "career_url": "https://www.gdgoenka.com/careers",
+    "selectors": {
+      "job_list": ".career-listing, .job-item, .opening",
+      "title": "h3, h4, .job-title",
+      "description": ".job-description, p"
+    },
+    "location": "Sector 48, Gurgaon"
+  },
+  {
+    "name": "Shiv Nadar School",
+    "career_url": "https://www.shivnadarschool.edu.in/gurgaon/careers",
+    "selectors": {
+      "job_list": ".job-listing, .vacancy-item, .career-post",
+      "title": "h3, h4, .title",
+      "description": ".description, .details, p"
+    },
+    "location": "Sector 168, Gurgaon"
+  }
+]
