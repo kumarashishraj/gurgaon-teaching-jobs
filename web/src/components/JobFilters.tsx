@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { JOB_TYPES, BOARDS, SOURCES, RELEVANCE_TIERS } from "@/lib/constants";
 
 const SORT_OPTIONS = [
@@ -10,56 +10,93 @@ const SORT_OPTIONS = [
   { value: "relevance", label: "Relevance" },
 ] as const;
 
+type FilterState = {
+  type: string[];
+  board: string[];
+  source: string[];
+  relevance: string[];
+  sort: string;
+};
+
+function parseFiltersFromParams(searchParams: URLSearchParams): FilterState {
+  return {
+    type: searchParams.get("type")?.split(",").filter(Boolean) || [],
+    board: searchParams.get("board")?.split(",").filter(Boolean) || [],
+    source: searchParams.get("source")?.split(",").filter(Boolean) || [],
+    relevance: searchParams.get("relevance")?.split(",").filter(Boolean) || [],
+    sort: searchParams.get("sort") || "newest",
+  };
+}
+
 export default function JobFilters() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const activeTypes = searchParams.get("type")?.split(",").filter(Boolean) || [];
-  const activeBoards = searchParams.get("board")?.split(",").filter(Boolean) || [];
-  const activeSources = searchParams.get("source")?.split(",").filter(Boolean) || [];
-  const activeRelevances = searchParams.get("relevance")?.split(",").filter(Boolean) || [];
-  const activeSort = searchParams.get("sort") || "newest";
+  const appliedFilters = useMemo(() => parseFiltersFromParams(searchParams), [searchParams]);
+  const [draft, setDraft] = useState<FilterState>(appliedFilters);
+
+  // Sync draft when URL changes externally (e.g. back/forward navigation)
+  const appliedKey = JSON.stringify(appliedFilters);
+  const [lastAppliedKey, setLastAppliedKey] = useState(appliedKey);
+  if (appliedKey !== lastAppliedKey) {
+    setDraft(appliedFilters);
+    setLastAppliedKey(appliedKey);
+  }
 
   const toggleFilter = useCallback(
-    (key: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      const current = params.get(key)?.split(",").filter(Boolean) || [];
-      const idx = current.indexOf(value);
-      if (idx >= 0) {
-        current.splice(idx, 1);
-      } else {
-        current.push(value);
-      }
-      if (current.length > 0) {
-        params.set(key, current.join(","));
+    (key: keyof FilterState, value: string) => {
+      setDraft((prev) => {
+        const current = prev[key] as string[];
+        const idx = current.indexOf(value);
+        const next = idx >= 0
+          ? current.filter((_, i) => i !== idx)
+          : [...current, value];
+        return { ...prev, [key]: next };
+      });
+    },
+    []
+  );
+
+  const setSort = useCallback((value: string) => {
+    setDraft((prev) => ({ ...prev, sort: value }));
+  }, []);
+
+  const applyFilters = useCallback(() => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    // Set filter params
+    for (const key of ["type", "board", "source", "relevance"] as const) {
+      if (draft[key].length > 0) {
+        params.set(key, draft[key].join(","));
       } else {
         params.delete(key);
       }
-      params.delete("page");
-      router.push(`/?${params.toString()}`);
-    },
-    [router, searchParams]
-  );
+    }
 
-  const setSort = useCallback(
-    (value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      if (value && value !== "newest") {
-        params.set("sort", value);
-      } else {
-        params.delete("sort");
-      }
-      params.delete("page");
-      router.push(`/?${params.toString()}`);
-    },
-    [router, searchParams]
-  );
+    // Set sort
+    if (draft.sort && draft.sort !== "newest") {
+      params.set("sort", draft.sort);
+    } else {
+      params.delete("sort");
+    }
+
+    params.delete("page");
+    router.push(`/?${params.toString()}`);
+  }, [router, searchParams, draft]);
+
+  const clearAll = useCallback(() => {
+    setDraft({ type: [], board: [], source: [], relevance: [], sort: "newest" });
+    router.push("/");
+  }, [router]);
+
+  // Check if draft differs from applied (to show Apply button)
+  const isDirty = JSON.stringify(draft) !== JSON.stringify(appliedFilters);
 
   const hasActiveFilters =
-    activeTypes.length > 0 ||
-    activeBoards.length > 0 ||
-    activeSources.length > 0 ||
-    activeRelevances.length > 0 ||
+    draft.type.length > 0 ||
+    draft.board.length > 0 ||
+    draft.source.length > 0 ||
+    draft.relevance.length > 0 ||
     searchParams.get("q");
 
   return (
@@ -69,7 +106,7 @@ export default function JobFilters() {
         <div className="flex items-center gap-2">
           <label className="text-xs font-medium text-muted">Sort:</label>
           <select
-            value={activeSort}
+            value={draft.sort}
             onChange={(e) => setSort(e.target.value)}
             className="border border-border rounded-lg px-3 py-1.5 text-sm bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
           >
@@ -80,42 +117,52 @@ export default function JobFilters() {
             ))}
           </select>
         </div>
-        {hasActiveFilters && (
-          <button
-            onClick={() => router.push("/")}
-            className="text-sm text-primary hover:text-primary-dark font-medium transition-colors"
-          >
-            Clear all filters
-          </button>
-        )}
+        <div className="flex items-center gap-3">
+          {hasActiveFilters && (
+            <button
+              onClick={clearAll}
+              className="text-sm text-muted hover:text-foreground font-medium transition-colors"
+            >
+              Clear all
+            </button>
+          )}
+          {isDirty && (
+            <button
+              onClick={applyFilters}
+              className="px-4 py-1.5 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary-dark transition-colors"
+            >
+              Apply Filters
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Filter groups */}
       <FilterGroup
         label="Job Type"
         items={JOB_TYPES as unknown as string[]}
-        activeItems={activeTypes}
+        activeItems={draft.type}
         filterKey="type"
         onToggle={toggleFilter}
       />
       <FilterGroup
         label="Board"
         items={BOARDS as unknown as string[]}
-        activeItems={activeBoards}
+        activeItems={draft.board}
         filterKey="board"
         onToggle={toggleFilter}
       />
       <FilterGroup
         label="Relevance"
         items={RELEVANCE_TIERS as unknown as string[]}
-        activeItems={activeRelevances}
+        activeItems={draft.relevance}
         filterKey="relevance"
         onToggle={toggleFilter}
       />
       <FilterGroup
         label="Source"
         items={SOURCES as unknown as string[]}
-        activeItems={activeSources}
+        activeItems={draft.source}
         filterKey="source"
         onToggle={toggleFilter}
       />
@@ -133,8 +180,8 @@ function FilterGroup({
   label: string;
   items: string[];
   activeItems: string[];
-  filterKey: string;
-  onToggle: (key: string, value: string) => void;
+  filterKey: keyof FilterState;
+  onToggle: (key: keyof FilterState, value: string) => void;
 }) {
   return (
     <div className="flex flex-wrap items-center gap-2">
