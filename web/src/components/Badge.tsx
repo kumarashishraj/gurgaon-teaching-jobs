@@ -4,6 +4,10 @@ const variants: Record<string, string> = {
   OTHER: "bg-gray-100 text-gray-800",
   source: "bg-amber-100 text-amber-800",
   board: "bg-green-100 text-green-800",
+  Hot: "bg-red-100 text-red-800",
+  "Top School": "bg-indigo-100 text-indigo-800",
+  New: "bg-emerald-100 text-emerald-800",
+  Featured: "bg-orange-100 text-orange-800",
 };
 
 export default function Badge({

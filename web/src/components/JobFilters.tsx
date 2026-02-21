@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
-import { JOB_TYPES, BOARDS, SOURCES } from "@/lib/constants";
+import { JOB_TYPES, BOARDS, SOURCES, RELEVANCE_TIERS } from "@/lib/constants";
 
 export default function JobFilters() {
   const router = useRouter();
@@ -10,6 +10,7 @@ export default function JobFilters() {
   const activeType = searchParams.get("type") || "";
   const activeBoard = searchParams.get("board") || "";
   const activeSource = searchParams.get("source") || "";
+  const activeRelevance = searchParams.get("relevance") || "";
 
   const setFilter = useCallback(
     (key: string, value: string) => {
@@ -65,6 +66,24 @@ export default function JobFilters() {
 
       <div>
         <label className="block text-xs font-medium text-muted mb-1">
+          Relevance
+        </label>
+        <select
+          value={activeRelevance}
+          onChange={(e) => setFilter("relevance", e.target.value)}
+          className="border border-border rounded-lg px-3 py-2 text-sm bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+        >
+          <option value="">All</option>
+          {RELEVANCE_TIERS.map((r) => (
+            <option key={r} value={r}>
+              {r}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label className="block text-xs font-medium text-muted mb-1">
           Source
         </label>
         <select
@@ -81,7 +100,7 @@ export default function JobFilters() {
         </select>
       </div>
 
-      {(activeType || activeBoard || activeSource || searchParams.get("q")) && (
+      {(activeType || activeBoard || activeRelevance || activeSource || searchParams.get("q")) && (
         <div className="flex items-end">
           <button
             onClick={() => router.push("/")}

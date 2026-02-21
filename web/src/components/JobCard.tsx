@@ -11,12 +11,15 @@ export default function JobCard({ job }: { job: Job }) {
     <div className="bg-card border border-border rounded-lg p-5 hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <Link
-            href={`/jobs/${job.id}`}
-            className="text-lg font-semibold text-foreground hover:text-primary transition-colors line-clamp-1"
-          >
-            {job.title}
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              href={`/jobs/${job.id}`}
+              className="text-lg font-semibold text-foreground hover:text-primary transition-colors line-clamp-1"
+            >
+              {job.title}
+            </Link>
+            {job.relevance && <Badge text={job.relevance} variant={job.relevance} />}
+          </div>
           <p className="text-muted mt-1 text-sm">{job.schoolName}</p>
         </div>
         <Badge text={job.jobType} variant={job.jobType} />
@@ -41,6 +44,33 @@ export default function JobCard({ job }: { job: Job }) {
         {job.board && <Badge text={job.board} variant="board" />}
         <Badge text={job.source} variant="source" />
       </div>
+
+      {(job.contactPhone || job.contactEmail) && (
+        <div className="mt-3 flex flex-wrap gap-3 text-sm">
+          {job.contactPhone && (
+            <a
+              href={`tel:${job.contactPhone}`}
+              className="flex items-center gap-1 text-muted hover:text-primary transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              {job.contactPhone}
+            </a>
+          )}
+          {job.contactEmail && (
+            <a
+              href={`mailto:${job.contactEmail}`}
+              className="flex items-center gap-1 text-muted hover:text-primary transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              {job.contactEmail}
+            </a>
+          )}
+        </div>
+      )}
 
       {job.description && (
         <p className="mt-3 text-sm text-foreground/70 line-clamp-2">
