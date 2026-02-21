@@ -38,6 +38,7 @@ export default function JobCard({ job }: { job: Job }) {
             {job.salaryInfo}
           </span>
         )}
+        {job.board && <Badge text={job.board} variant="board" />}
         <Badge text={job.source} variant="source" />
       </div>
 

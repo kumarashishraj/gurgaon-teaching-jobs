@@ -74,6 +74,7 @@ export default async function JobDetailPage({
               {job.salaryInfo}
             </span>
           )}
+          {job.board && <Badge text={job.board} variant="board" />}
           <Badge text={job.source} variant="source" />
           {job.postedDate && (
             <span>

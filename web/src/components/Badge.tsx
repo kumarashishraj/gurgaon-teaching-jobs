@@ -3,6 +3,7 @@ const variants: Record<string, string> = {
   PGT: "bg-purple-100 text-purple-800",
   OTHER: "bg-gray-100 text-gray-800",
   source: "bg-amber-100 text-amber-800",
+  board: "bg-green-100 text-green-800",
 };
 
 export default function Badge({

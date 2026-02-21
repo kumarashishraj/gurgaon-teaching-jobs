@@ -11,6 +11,7 @@ export const jobs = sqliteTable(
       .notNull()
       .default("OTHER"),
     subject: text("subject").notNull().default("Mathematics"),
+    board: text("board"),
     description: text("description"),
     applyLink: text("apply_link"),
     applyEmail: text("apply_email"),

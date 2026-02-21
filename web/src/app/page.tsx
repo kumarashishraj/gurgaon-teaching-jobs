@@ -12,7 +12,7 @@ import Link from "next/link";
 export default async function HomePage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; type?: string; source?: string; page?: string }>;
+  searchParams: Promise<{ q?: string; type?: string; board?: string; source?: string; page?: string }>;
 }) {
   const params = await searchParams;
   const page = Math.max(1, parseInt(params.page || "1", 10));
@@ -28,6 +28,9 @@ export default async function HomePage({
   }
   if (params.type) {
     conditions.push(eq(jobs.jobType, params.type as "TGT" | "PGT" | "OTHER"));
+  }
+  if (params.board) {
+    conditions.push(eq(jobs.board, params.board));
   }
   if (params.source) {
     conditions.push(eq(jobs.source, params.source));

@@ -9,6 +9,9 @@ export const JOBS_PER_PAGE = 12;
 export const JOB_TYPES = ["TGT", "PGT", "OTHER"] as const;
 export type JobType = (typeof JOB_TYPES)[number];
 
+export const BOARDS = ["CBSE", "ICSE", "IB", "IGCSE", "State Board"] as const;
+export type Board = (typeof BOARDS)[number];
+
 export const SOURCES = [
   "Google",
   "School Website",
