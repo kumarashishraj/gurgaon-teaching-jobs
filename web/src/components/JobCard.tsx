@@ -2,16 +2,35 @@ import Link from "next/link";
 import Badge from "./Badge";
 import type { Job } from "@/lib/schema";
 
+function getAccentClass(relevance: string | null): string {
+  switch (relevance) {
+    case "Hot":
+      return "accent-hot card-hot-bg";
+    case "Top School":
+      return "accent-top-school card-top-school-bg";
+    case "New":
+      return "accent-new";
+    case "Featured":
+      return "accent-featured";
+    default:
+      return "";
+  }
+}
+
 export default function JobCard({ job }: { job: Job }) {
   const postedAgo = job.postedDate
     ? formatRelativeDate(job.postedDate)
     : "Recently";
 
+  const accentClass = getAccentClass(job.relevance);
+
   return (
-    <div className="bg-card border border-border rounded-lg p-5 hover:shadow-md transition-shadow">
+    <div
+      className={`bg-card border border-border rounded-xl p-6 card-hover ${accentClass}`}
+    >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <Link
               href={`/jobs/${job.id}`}
               className="text-lg font-semibold text-foreground hover:text-primary transition-colors line-clamp-1"
@@ -20,7 +39,7 @@ export default function JobCard({ job }: { job: Job }) {
             </Link>
             {job.relevance && <Badge text={job.relevance} variant={job.relevance} />}
           </div>
-          <p className="text-muted mt-1 text-sm">{job.schoolName}</p>
+          <p className="text-muted mt-1.5 text-sm">{job.schoolName}</p>
         </div>
         <Badge text={job.jobType} variant={job.jobType} />
       </div>

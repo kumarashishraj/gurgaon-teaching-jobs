@@ -32,7 +32,7 @@ export default function Footer() {
           </nav>
         </div>
         <div className="mt-6 pt-4 border-t border-border text-center text-xs text-muted">
-          &copy; {new Date().getFullYear()} {SITE_NAME}. Updated every 6 hours.
+          &copy; {new Date().getFullYear()} {SITE_NAME}. Updated every 5 minutes.
         </div>
       </div>
     </footer>
