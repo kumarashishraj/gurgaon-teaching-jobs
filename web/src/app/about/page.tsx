@@ -42,7 +42,7 @@ export default function AboutPage() {
           Sources
         </h2>
         <ul className="list-disc pl-6 space-y-2">
-          <li>School career pages (DPS, Shri Ram, Pathways, Scottish High, Heritage, Suncity, GD Goenka, Shiv Nadar)</li>
+          <li>45+ school career pages including DPS, Shri Ram, Pathways, Scottish High, Heritage, Suncity, GD Goenka, Shiv Nadar, Lotus Valley, Lancers, Amity, K.R. Mangalam, Bal Bharati, Presidium, Ryan, DAV, GEMS, Excelsior, VIBGYOR, Blue Bells, Shikshantar, and more</li>
           <li>Naukri.com</li>
           <li>Indeed.co.in</li>
           <li>LinkedIn (via Google search)</li>

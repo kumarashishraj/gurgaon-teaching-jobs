@@ -1,82 +1,462 @@
 [
   {
-    "name": "DPS Gurgaon",
-    "career_url": "https://dpsgurgaon.org/careers",
+    "name": "DPS Gurgaon, Sector 45",
+    "career_url": "https://www.dpsgurgaon.org/careers.php",
     "selectors": {
-      "job_list": ".career-listing, .job-listing, .vacancy-item",
-      "title": "h3, h4, .job-title",
-      "description": ".job-description, .vacancy-details, p"
+      "job_list": ".career-listing, .job-listing, .vacancy-item, table tr, .content-area li",
+      "title": "h3, h4, .job-title, td:first-child, a",
+      "description": ".job-description, .vacancy-details, p, td:nth-child(2)"
     },
     "location": "Sector 45, Gurgaon"
   },
   {
-    "name": "The Shri Ram School",
-    "career_url": "https://www.tsrs.org/careers",
+    "name": "DPS Gurugram, Sector 84",
+    "career_url": "https://dpsgurugram84.com/career-opportunities/",
     "selectors": {
-      "job_list": ".career-item, .vacancy, .job-post",
-      "title": "h3, h4, .title",
+      "job_list": ".career-listing, .job-listing, .vacancy-item, .entry-content li, table tr",
+      "title": "h3, h4, .job-title, a, strong",
+      "description": ".job-description, p"
+    },
+    "location": "Sector 84, Gurgaon"
+  },
+  {
+    "name": "DPS Sushant Lok",
+    "career_url": "https://dpssl.net/career",
+    "selectors": {
+      "job_list": ".career-listing, .job-listing, .vacancy-item, li, table tr",
+      "title": "h3, h4, .job-title, a",
+      "description": ".job-description, p"
+    },
+    "location": "Sushant Lok, Gurgaon"
+  },
+  {
+    "name": "DPS International",
+    "career_url": "https://dpsiedge.edu.in/Careers",
+    "selectors": {
+      "job_list": ".career-listing, .job-listing, .vacancy-item, table tr, li",
+      "title": "h3, h4, .job-title, a",
+      "description": ".job-description, p"
+    },
+    "location": "Sector 23, Gurgaon"
+  },
+  {
+    "name": "The Shri Ram School",
+    "career_url": "https://tsrs.org/openings/",
+    "selectors": {
+      "job_list": ".career-item, .vacancy, .job-post, .opening, li, table tr",
+      "title": "h3, h4, .title, a",
       "description": ".description, .details, p"
     },
     "location": "Aravali, Gurgaon"
   },
   {
     "name": "Pathways School Gurgaon",
-    "career_url": "https://www.pathways.in/gurgaon/careers",
+    "career_url": "https://www.pathwaysgurgaon.edu.in/careers",
     "selectors": {
-      "job_list": ".career-listing, .job-item, .opening",
-      "title": "h3, h4, .job-title",
+      "job_list": ".career-listing, .job-item, .opening, li, table tr",
+      "title": "h3, h4, .job-title, a",
       "description": ".job-desc, .details, p"
     },
     "location": "Sector 100, Gurgaon"
   },
   {
-    "name": "Scottish High International School",
-    "career_url": "https://www.scottishigh.com/careers",
+    "name": "Pathways World School",
+    "career_url": "https://www.pws.edu.in/gurgaon/careers",
     "selectors": {
-      "job_list": ".vacancy, .career-post, .job-listing",
-      "title": "h3, h4, .title",
+      "job_list": ".career-listing, .job-item, .opening, li, table tr",
+      "title": "h3, h4, .job-title, a",
+      "description": ".job-desc, .details, p"
+    },
+    "location": "Sohna Road, Gurgaon"
+  },
+  {
+    "name": "Scottish High International School",
+    "career_url": "https://scottishigh.com/careers/",
+    "selectors": {
+      "job_list": ".vacancy, .career-post, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
       "description": ".description, p"
     },
     "location": "Sector 57, Gurgaon"
   },
   {
     "name": "Heritage Xperiential Learning School",
-    "career_url": "https://www.heritageschool.in/work-with-us",
+    "career_url": "https://heritagexperiential.org/careers/",
     "selectors": {
-      "job_list": ".career-item, .job-post, .vacancy",
-      "title": "h3, h4, .job-title",
+      "job_list": ".career-item, .job-post, .vacancy, li, table tr",
+      "title": "h3, h4, .job-title, a",
       "description": ".description, .content, p"
     },
     "location": "Sector 62, Gurgaon"
   },
   {
-    "name": "Suncity School",
-    "career_url": "https://www.suncityschool.in/careers",
+    "name": "Suncity School, Sector 54",
+    "career_url": "https://www.suncityschool54.com/careers.php",
     "selectors": {
-      "job_list": ".job-listing, .vacancy, .career-item",
-      "title": "h3, h4, .title",
+      "job_list": ".job-listing, .vacancy, .career-item, li, table tr",
+      "title": "h3, h4, .title, a",
       "description": ".description, p"
     },
     "location": "Sector 54, Gurgaon"
   },
   {
-    "name": "GD Goenka Public School",
-    "career_url": "https://www.gdgoenka.com/careers",
+    "name": "Suncity School, Sector 37D",
+    "career_url": "https://suncityschool-37d.com/careers.php",
     "selectors": {
-      "job_list": ".career-listing, .job-item, .opening",
-      "title": "h3, h4, .job-title",
+      "job_list": ".job-listing, .vacancy, .career-item, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 37D, Gurgaon"
+  },
+  {
+    "name": "GD Goenka Public School",
+    "career_url": "https://gdgoenka-gurgaon.com/career",
+    "selectors": {
+      "job_list": ".career-listing, .job-item, .opening, li, table tr",
+      "title": "h3, h4, .job-title, a",
       "description": ".job-description, p"
     },
     "location": "Sector 48, Gurgaon"
   },
   {
-    "name": "Shiv Nadar School",
-    "career_url": "https://www.shivnadarschool.edu.in/gurgaon/careers",
+    "name": "GD Goenka World School",
+    "career_url": "https://gdgws.gdgoenka.com/careers/",
     "selectors": {
-      "job_list": ".job-listing, .vacancy-item, .career-post",
-      "title": "h3, h4, .title",
+      "job_list": ".career-listing, .job-item, .opening, li, table tr",
+      "title": "h3, h4, .job-title, a",
+      "description": ".job-description, p"
+    },
+    "location": "Sohna Road, Gurgaon"
+  },
+  {
+    "name": "Shiv Nadar School",
+    "career_url": "https://shivnadarschool.edu.in/careers",
+    "selectors": {
+      "job_list": ".job-listing, .vacancy-item, .career-post, li, table tr",
+      "title": "h3, h4, .title, a",
       "description": ".description, .details, p"
     },
-    "location": "Sector 168, Gurgaon"
+    "location": "DLF Phase IV, Gurgaon"
+  },
+  {
+    "name": "Lotus Valley International School",
+    "career_url": "https://www.lotusvalleygurgaon.com/careers-openings.php",
+    "selectors": {
+      "job_list": ".career-listing, .job-listing, .vacancy, li, table tr",
+      "title": "h3, h4, .job-title, a, strong",
+      "description": ".job-description, p"
+    },
+    "location": "Sector 50, Gurgaon"
+  },
+  {
+    "name": "DAV Public School, Sector 14",
+    "career_url": "http://www.dav14gurgaon.org/page/jobs.html",
+    "selectors": {
+      "job_list": ".job-listing, .vacancy, li, table tr, .content li",
+      "title": "h3, h4, .title, a, strong",
+      "description": ".description, p"
+    },
+    "location": "Sector 14, Gurgaon"
+  },
+  {
+    "name": "DAV Public School, Sector 49",
+    "career_url": "https://dav49gurugram.org/0E6D60D6-4AC4-47B3-AFEF-353514D14740/CMS/Page/VACANCY",
+    "selectors": {
+      "job_list": ".job-listing, .vacancy, li, table tr",
+      "title": "h3, h4, .title, a, strong",
+      "description": ".description, p"
+    },
+    "location": "Sector 49, Gurgaon"
+  },
+  {
+    "name": "Presidium School",
+    "career_url": "https://www.presidiumgurgaon.com/vacancy.php",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 57, Gurgaon"
+  },
+  {
+    "name": "Blue Bells Model School",
+    "career_url": "https://bbms.bluebells.org/current-openings/",
+    "selectors": {
+      "job_list": ".job-listing, .vacancy, .opening, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 4, Gurgaon"
+  },
+  {
+    "name": "K.R. Mangalam World School",
+    "career_url": "https://www.krmangalamgurgaon.com/job-openings/",
+    "selectors": {
+      "job_list": ".job-listing, .vacancy, .career-item, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 41, Gurgaon"
+  },
+  {
+    "name": "Amity International School",
+    "career_url": "https://amityschools.in/gurugram46/vacancies/",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 46, Gurgaon"
+  },
+  {
+    "name": "Amity Global School",
+    "career_url": "https://amityglobalschoolgurgaon.com/careers",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 46, Gurgaon"
+  },
+  {
+    "name": "Shikshantar School",
+    "career_url": "https://www.shikshantarschool.com/vacancies.html",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "South City I, Gurgaon"
+  },
+  {
+    "name": "Bal Bharati Public School",
+    "career_url": "https://bbpsgr.balbharati.org/contact-us-2/careers-with-bbps/",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 21, Gurgaon"
+  },
+  {
+    "name": "VIBGYOR High",
+    "career_url": "https://www.vibgyorhigh.com/careers/",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, .career-item, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 67, Gurgaon"
+  },
+  {
+    "name": "Lancers International School",
+    "career_url": "https://www.lis.ac.in/about-us/careers/",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 53, Gurgaon"
+  },
+  {
+    "name": "Excelsior American School",
+    "career_url": "https://excelsioramericanschooladmissions.com/careers/",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 43, Gurgaon"
+  },
+  {
+    "name": "Manav Rachna International School",
+    "career_url": "https://mris.edu.in/",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 46, Gurgaon"
+  },
+  {
+    "name": "Salwan Public School",
+    "career_url": "https://spsgurugram.edu.in/",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 15, Gurgaon"
+  },
+  {
+    "name": "Shalom Hills International School",
+    "career_url": "https://shalomhills.com/careers.html",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sushant Lok, Gurgaon"
+  },
+  {
+    "name": "The HDFC School",
+    "career_url": "https://www.thehdfcschool.com/gurgaon/careers.html",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 57, Gurgaon"
+  },
+  {
+    "name": "Satya School",
+    "career_url": "https://satyaschool.com/careers/",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 49, Gurgaon"
+  },
+  {
+    "name": "GEMS International School",
+    "career_url": "https://www.gemsinternationalschoolgurgaon.com/career",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Palam Vihar, Gurgaon"
+  },
+  {
+    "name": "Alpine Convent School",
+    "career_url": "https://www.alpineconventschool.com/career",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 56, Gurgaon"
+  },
+  {
+    "name": "Vega Schools",
+    "career_url": "https://www.vega.edu.in/careers",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 48, Gurgaon"
+  },
+  {
+    "name": "Kunskapsskolan (KED)",
+    "career_url": "https://ked.edu.in/careers/",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "DLF Phase I, Gurgaon"
+  },
+  {
+    "name": "Paras World School",
+    "career_url": "http://parasworldschool.com/careers/",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 50, Gurgaon"
+  },
+  {
+    "name": "Gurugram Public School",
+    "career_url": "https://www.gurugrampublicschool.in/Careers.html",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 55, Gurgaon"
+  },
+  {
+    "name": "Ambience Public School",
+    "career_url": "https://ambienceschool.com/career/",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 43, Gurgaon"
+  },
+  {
+    "name": "Ryan International School, Sector 31",
+    "career_url": "https://www.ryangroup.org/ryaninternational/cbse/gurgaon/ryan-international-school-sector-31/careers/careers-at-ryan",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 31, Gurgaon"
+  },
+  {
+    "name": "Ryan International School, Sector 40",
+    "career_url": "https://www.ryangroup.org/ryaninternational/cbse/gurgaon/ryan-international-school-sector-40/careers/careers-at-ryan",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 40, Gurgaon"
+  },
+  {
+    "name": "St. Xavier's High School, Sector 49",
+    "career_url": "https://49.stxaviershighschoolgurgaon.com/career.aspx",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 49, Gurgaon"
+  },
+  {
+    "name": "Orchids The International School",
+    "career_url": "https://www.orchidsinternationalschool.com/careers",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Gurgaon"
+  },
+  {
+    "name": "Greenwood Public School",
+    "career_url": "https://www.greenwoodgurgaon.com/career-opportunities",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 46, Gurgaon"
+  },
+  {
+    "name": "The Ardee School",
+    "career_url": "https://theardeeschool.com/",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Sector 52, Gurgaon"
+  },
+  {
+    "name": "Prudence School",
+    "career_url": "https://www.prudenceschools.com/careers.php",
+    "selectors": {
+      "job_list": ".vacancy, .job-listing, li, table tr",
+      "title": "h3, h4, .title, a",
+      "description": ".description, p"
+    },
+    "location": "Gurgaon"
   }
 ]
