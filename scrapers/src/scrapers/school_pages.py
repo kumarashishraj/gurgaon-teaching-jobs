@@ -36,6 +36,21 @@ class SchoolPagesScraper(BaseScraper):
         print(f"  School pages found {len(jobs)} total jobs")
         return jobs
 
+    @staticmethod
+    def _is_job_posting(text: str) -> bool:
+        """Check if the text looks like an actual job posting, not just a page
+        that happens to mention maths (e.g. 'Maths Lab', 'Maths Club')."""
+        text_lower = text.lower()
+        job_indicators = [
+            "vacancy", "vacancies", "hiring", "recruit", "apply",
+            "application", "walk-in", "walk in", "opening", "openings",
+            "position", "required", "requirement", "job", "career",
+            "resume", "cv", "interview", "salary", "compensation",
+            "tgt", "pgt", "teacher required", "teacher needed",
+            "looking for", "we are looking", "invites applications",
+        ]
+        return any(kw in text_lower for kw in job_indicators)
+
     def _scrape_school(self, school: dict) -> List[JobListing]:
         headers = {"User-Agent": USER_AGENT}
         resp = requests.get(
@@ -51,9 +66,10 @@ class SchoolPagesScraper(BaseScraper):
         listings = soup.select(selectors["job_list"])
 
         if not listings:
-            # Fallback: look for any text containing maths keywords
+            # Fallback: only create a listing if the page clearly advertises
+            # a maths teaching vacancy (not just mentions maths in general)
             all_text = soup.get_text()
-            if self.is_maths_related(all_text):
+            if self.is_maths_related(all_text) and self._is_job_posting(all_text):
                 jobs.append(
                     JobListing(
                         title=f"Mathematics Teacher - {school['name']}",
@@ -76,6 +92,10 @@ class SchoolPagesScraper(BaseScraper):
             combined = f"{title} {description}"
 
             if not self.is_maths_related(combined):
+                continue
+
+            # Skip non-job pages (maths labs, clubs, facilities, etc.)
+            if not self._is_job_posting(combined):
                 continue
 
             # Try to find apply link
